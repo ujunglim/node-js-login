@@ -2,6 +2,7 @@ package.json에서 관리하기 쉬움
 
 ```
 npm i express -s
+npm i ejs -s
 ```
 
 run
