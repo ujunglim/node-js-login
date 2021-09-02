@@ -12,8 +12,10 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 // middleware
-// 정적경로 추가  __dirname: app.js가 있는 위치반환 
 app.use(express.static(`${__dirname}/src/public`));
-app.use("/", home); // 루트경로로 들어오면 홈으로 보내줌.
+app.use(express.json());
+// URL을 통해 전달되는 데이터에 한글, 공백 등과 같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결
+app.use(express.urlencoded({ extended: true}));
+app.use("/", home); 
 
 module.exports = app;
