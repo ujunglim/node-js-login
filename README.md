@@ -5,6 +5,12 @@ npm i express -s
 npm i ejs -s
 ```
 
+devDependencies
+```
+npm install -g nodemon
+npm i nodemon -D
+```
+
 run
 ```
 npm start
