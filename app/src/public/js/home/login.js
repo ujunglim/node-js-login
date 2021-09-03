@@ -21,5 +21,15 @@ loginBTN.addEventListener('click', () => {
 	})
 	// 서버에서 응답한 데이터 받기
 	.then((res) => res.json()) // 반환값 전달
-	.then(console.log);
+	.then((res) => {
+		if(res.success) {
+			location.href = '/'; // 이동
+		}
+		else {
+			alert(res.msg);
+		}
+	})
+	.catch((err) => {
+		console.error(new Error('Error to login'));
+	})
 })

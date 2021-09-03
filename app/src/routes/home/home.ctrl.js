@@ -1,5 +1,7 @@
 "use strict"
 
+const UserStorage = require('../../models/UserStorage');
+
 const output = {
   home: (req, res) => {
     res.render('home/index');
@@ -9,31 +11,27 @@ const output = {
   }
 }
 
-// fake data
-const users = {
-  id: ['yu', 'yuyu', 'yujung'],
-  password: ['1234', '1234', '123456']
-}
-
 const process =  {
   login: (req, res) => {
     const {id, password} = req.body;
+    // get data from UserStorage
+    const users = UserStorage.getUsers('id', 'password');
+    const response = {};
+
     // authenticate id, password
     if(users.id.includes(id)) {
       const idx = users.id.indexOf(id);
+      // 성공시
       if(users.password[idx] === password) {
-      // 성공하면 success: true라는 obj를 json으로 만들어서 respond
-        return res.json({
-          success: true
-        })
+        response.success = true;
+        return res.json(response);
       }
     }
 
     // 실패할시
-    return res.json({
-      success: false,
-      msg: "Fail to login."
-    });
+    response.success = false; 
+    response.msg = "Fail to login."
+    return res.json(response);
   }
 }
 
