@@ -19,4 +19,7 @@ loginBTN.addEventListener('click', () => {
 		},
 		body: JSON.stringify(req),
 	})
+	// 서버에서 응답한 데이터 받기
+	.then((res) => res.json()) // 반환값 전달
+	.then(console.log);
 })
