@@ -7,7 +7,7 @@ class UserStorage {
 		name: ['yujung1', 'yujung2', 'yujung3'],
 	};
 
-	// private 변수를 반환해줌
+	// 저장된 데이터 반환
 	static getUsers(...fields) {
 		const users = this.#users;
 		const newUsers = fields.reduce((newUsers, field) => {
@@ -17,6 +17,20 @@ class UserStorage {
 			return newUsers;
 		}, {});
 		return newUsers;
+	}
+
+	// 요청하는 id에 해당하는 데이터만 반환
+	static getUserInfo(id) {
+		const users = this.#users;
+		const index = users.id.indexOf(id);
+		const keys = Object.keys(users); // => [id, password, name]
+
+		const userInfo = keys.reduce((newUser, key) => {
+			newUser[key] = users[key][index];
+			return newUser;
+		}, {});
+
+		return userInfo;
 	}
 }
 
