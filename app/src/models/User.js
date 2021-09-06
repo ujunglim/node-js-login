@@ -7,10 +7,10 @@ class User {
     this.body = body;
   }
 
-  login() {
+  async login() {
     const client = this.body;
     // get data from UserStorage
-    const {id, password} = UserStorage.getUserInfo(client.id);
+    const {id, password} = await UserStorage.getUserInfo(client.id);
     
     // id가 storage에 있는지 체크
     if(id) {

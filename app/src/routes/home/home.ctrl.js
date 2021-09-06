@@ -15,10 +15,10 @@ const output = {
 }
 
 const process =  {
-  login: (req, res) => {
+  login: async (req, res) => {
     // 클라이언트 전달한 req 데이터를 넣어서 instance화
     const user = new User(req.body);
-    const response = user.login();
+    const response = await user.login();
     return res.json(response);
   },
   register: (req, res) => {
