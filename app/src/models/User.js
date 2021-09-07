@@ -29,11 +29,17 @@ class User {
     }
   }
 
-  register() {
+  async register() {
     const client = this.body;
-    // save client info to UserStorage
-    const response = UserStorage.save(client);
-    return response;
+    try {
+      // save client info to UserStorage
+      const response = await UserStorage.save(client);
+      return response;
+    }
+    catch(err) {
+      return {success: false, msg: err};
+    }
+ 
   }
 
 }

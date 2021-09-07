@@ -9,7 +9,7 @@ const registerBTN = document.querySelector('button');
 registerBTN.addEventListener('click', (evt) => {
 	evt.preventDefault();
 
-	if(!id.value) return alert('Please input Username');
+	if(!id.value) return alert('Please input Id');
 	// check password 
 	if(password.value !== confirmPassword.value) return alert('Passwords do not match')
 
